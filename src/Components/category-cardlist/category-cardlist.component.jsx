@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../category-card/category-card.component'
+import './category-cardlist.styles.scss'
  
 const CardList = (props) => {
     const {list} = props;
@@ -9,7 +10,7 @@ const CardList = (props) => {
     
 
   return (
-    <div>
+    <div className='cardlist'>
     {categories.map((category)=>{
         return <Card key={category.id} name={category.title} />
     })}
