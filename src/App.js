@@ -1,8 +1,9 @@
+import Homepage from "./Pages/Homepage";
 
 function App() {
   return (
-    <div >
-    Hello
+    <div className="categories-container">      
+      <Homepage/>
     </div>
   );
 }
