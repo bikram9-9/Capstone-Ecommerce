@@ -11,7 +11,7 @@ const CardList = (props) => {
   return (
     <div>
     {categories.map((category)=>{
-        <Card name={category.title} />
+        return <Card key={category.id} name={category.title} />
     })}
 
     </div>
