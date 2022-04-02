@@ -1,10 +1,9 @@
 @import '../../globalvariables.styles.scss';
 
 .card {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1 fr;
-
-    align-items: center;
+    background-color: $highlight-color;
+    padding: 2rem;
+    grid-auto-rows: minmax(100px, auto);
     margin: 2rem;
 
 }

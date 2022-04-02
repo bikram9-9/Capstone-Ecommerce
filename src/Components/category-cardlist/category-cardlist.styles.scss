@@ -1,6 +1,9 @@
 @import '../../globalvariables.styles.scss';
 
 .cardlist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // gap: 10px;
     background-color: $background-color;
     color: $text-color;
     margin: 0rem 5rem 0rem 5rem;
