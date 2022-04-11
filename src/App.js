@@ -1,5 +1,4 @@
 import Homepage from "./Pages/Homepage";
-import {Router} from "react-router";
 
 function App() {
   return (

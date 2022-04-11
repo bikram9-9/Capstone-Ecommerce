@@ -1,0 +1,27 @@
+@import "../../global-variables.styles.scss";
+
+.signUpPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.formContainer{
+    display:flex;
+    background-color: $white-shade;
+    max-width: 500px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 300px;
+
+}
+
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+
+}

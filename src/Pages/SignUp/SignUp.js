@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import PrimaryButton from '../Components/buttons/primary-button/primary-button.component';
-import InputField from '../Components/input-field/input-field.component';
+import PrimaryButton from '../../Components/buttons/primary-button/primary-button.component';
+import InputField from '../../Components/input-field/input-field.component';
+import './sign-up.styles.scss';
 
 export class SignUp extends Component {
 
@@ -11,15 +12,13 @@ export class SignUp extends Component {
                 label: "First Name",
                 name: "firstName",
                 type: "inputField",
-                placeholder: "Singh",
                 onChangeHandler: {},
-                firstNameValue=""
+                firstNameValue:""
             },
             {
                 label: "Last Name",
                 name: "lastName",
                 type: "inputField",
-                placeholder: "Singh",
                 onChangeHandler: {},
                 lastNameValue:""
             },
@@ -27,7 +26,6 @@ export class SignUp extends Component {
                 label: "Street Name",
                 name: "streetName",
                 type: "inputField",
-                placeholder: "961 Saratoga Way..",
                 onChangeHandler: {},
                 streetNameValue:""
             },
@@ -35,7 +33,6 @@ export class SignUp extends Component {
                 label: "Zipcode",
                 name: "zipcode",
                 type: "inputField",
-                placeholder: "961 Saratoga Way..",
                 onChangeHandler: {},
                 zipCodeValue:""
             }   
@@ -51,12 +48,15 @@ export class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.signupInfo.map(input => {
-                    return <IunptField key={input.label} label={input.label} name= {input.name} type= {input.type} placeholder= {input.placeholder}/>
-                })}
-                <PrimaryButton text="Sign Up" type={small} onClickHandler ={this.onClickHandler}/>
+            <div className="signUpPage">
+                <div className="formContainer">
+                    {this.state.signupInfo.map(input => {
+                        return <InputField className="inputContainer" key={input.label} label={input.label} name= {input.name} type= {input.type} placeholder= {input.placeholder}/>
+                    })}
+                    <PrimaryButton  text="Sign Up" redirectTo="/"onClickHandler ={this.onClickHandler}/>
+                </div>
             </div>
+
         )
     }
 }

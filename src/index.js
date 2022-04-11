@@ -5,16 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import {  } from 'react-router-dom';
-import SignUp from './Pages/SignUp';
+import SignUp from '../src/Pages/SignUp/SignUp'
+import Navbar from './Components/NavigationBar/navigation-bar.components';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Navbar/>
     <Routes>
-      <Route path="/" to={<App/>}/>
-      <Route path="signup" to={<SignUp/>}/>
+      <Route path="/" element={<App/>}/>
+      <Route path="signup" element={<SignUp/>}/>
     </Routes>
-    
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,0 +1,14 @@
+@import "../../../global-variables.styles.scss";
+
+.button{
+    background-color: $secondary-color;
+    color: $button-text-color;
+    height: 35px;
+    width: 150px;
+    border-radius: 7px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    justify-items: center;
+
+}
