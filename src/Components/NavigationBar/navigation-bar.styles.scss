@@ -1,0 +1,15 @@
+@import "../../global-variables.styles.scss";
+
+.navContainer{
+    background-color: $primary-color ;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.linksContainer{
+    display: flex;
+    flex-direction: row;
+    justify-items: end;
+    align-items: flex-end;
+}
