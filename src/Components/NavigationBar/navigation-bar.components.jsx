@@ -10,14 +10,9 @@ const Navbar = () => {
       <div className='navContainer'>
         <img src={marsLogo} width='40px'/>
         <div className='linksContainer'>
-          <Link to="/">
-              Home
-          </Link>
-          <Link to="/signup">
-              Sign Up
-          </Link>
+          <Link className="link" to="/">Home </Link>
+          <Link className="link " to="/signin"> Sign In</Link>
         </div>
-
       </div>
     </Fragment>
   )

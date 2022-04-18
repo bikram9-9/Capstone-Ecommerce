@@ -4,12 +4,27 @@
     background-color: $primary-color ;
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 10px 30px 10px 30px;
+    justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .linksContainer{
     display: flex;
     flex-direction: row;
-    justify-items: end;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link{
+    color: $nav-text-color;
+    padding: 10px 30px 10px 30px;
+
+    &:hover{
+        background-color: $nav-link-hover-bg-color;
+        color: $nav-link-hover-text-color;
+    }
+
+
+
 }

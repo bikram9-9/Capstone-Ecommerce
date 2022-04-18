@@ -1,0 +1,105 @@
+@import "../../global-variables.styles.scss";
+
+.signInPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    max-width: 500px;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 200px;
+}
+.formContainer{
+    display:flex;
+    background-color: $white-shade;
+    max-width: 500px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 40px;
+
+}
+
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.signUpDesc{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    color: $link-color;
+    font-size: 13px;
+    margin: 10px 30px 10px 50px;
+
+    &:hover{
+        text-decoration: underline;
+        text-decoration-color: $link-color;
+    }
+}
+
+.googleSignIn{
+    display: flex;
+    padding: 15px 20px 15px 20px;
+    background-color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: .2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+    border-width: 1px;
+    order: 2px solid currentColor;
+    font-family: roboto;
+    overflow: hidden;
+    text-decoration: none;
+    transition: 0.2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+  
+    &::after{
+        background-color: #F6F6F6;
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, 0) rotate(10deg);
+        transform-origin: top left;
+        transition: 0.2s transform ease-out;
+        will-change: transform;
+        z-index: -1;
+    }
+
+    &:hover::after{
+        transform: translate(0, 0);
+
+    }
+
+    &:hover{
+        border: 2px solid transparent;
+
+        color: black;
+        transform: scale(1.05);
+        will-change: transform;
+        cursor: pointer;
+    }
+
+
+.googleLogo{
+    margin-right: 20px
+}
+
+}

@@ -3,7 +3,7 @@ import "./input-field.styles.scss";
 
 const InputField = (props) => {
 
-    const {label, name, type, placeholder, onChangeHandler} = props;
+    const {label, name, type, placeholder, onChangeHandler,autocomplete} = props;
     return (
         <Fragment>
             <label className="label" >
@@ -14,6 +14,7 @@ const InputField = (props) => {
                     placeholder={placeholder}
                     className="inputField"
                     onChange={onChangeHandler}
+                    autoComplete={autocomplete}
                 />
             </label>
         </Fragment>

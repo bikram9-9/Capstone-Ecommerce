@@ -7,6 +7,7 @@ import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import {  } from 'react-router-dom';
 import SignUp from '../src/Pages/SignUp/SignUp'
 import Navbar from './Components/NavigationBar/navigation-bar.components';
+import SignIn from './Components/SignIn/sign-in.component';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App/>}/>
       <Route path="signup" element={<SignUp/>}/>
+      <Route path="signIn" element={<SignIn/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,
