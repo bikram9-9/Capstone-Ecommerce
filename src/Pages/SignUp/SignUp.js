@@ -1,50 +1,80 @@
 import React, { Component } from 'react'
-import PrimaryButton from '../../Components/buttons/primary-button/primary-button.component';
-import InputField from '../../Components/input-field/input-field.component';
 import './sign-up.styles.scss';
 import  mars from '../../Assets/mars.png';
+import {auth, createAuthUserWithEmailAndPassword} from '../../firebase/firebase.util'
 
 export class SignUp extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            signupInfo: [{
-                label: "First Name",
-                name: "firstName",
-                type: "inputField",
-                onChangeHandler: {},
-                firstNameValue:""
-            },
-            {
-                label: "Last Name",
-                name: "lastName",
-                type: "inputField",
-                onChangeHandler: {},
-                lastNameValue:""
-            },
-            {
-                label: "Street Name",
-                name: "streetName",
-                type: "inputField",
-                onChangeHandler: {},
-                streetNameValue:""
-            },
-            {
-                label: "Zipcode",
-                name: "zipcode",
-                type: "inputField",
-                onChangeHandler: {},
-                zipCodeValue:""
-            }   
-             ]
-    
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            passwordMatch: true,
+            passwordMeetsRequirements: true
         };
     }
 
-    onClickHandler = () =>{
-        //store
-        console.log("OnClickHandler Called")
+    onNameChange = (event) =>{
+        const {value} = event.target;
+        this.setState({
+            name: value
+        })
+    }
+    onEmailChange = (event) =>{
+        const {value} = event.target;
+        this.setState({
+            email : value
+        })
+    }
+    onPasswordChange = (event) =>{
+        const {value} = event.target;
+        this.setState({
+            password : value
+        })
+    }
+    onConfirmPasswordChange = async (event) =>{
+        const {value} = event.target;
+
+        this.setState({
+            confirmPassword : value
+        }, () =>{
+            this.passwordsMatch();
+     }
+        )
+    }
+
+    passwordsMatch = async () =>{
+        if(this.state.password === this.state.confirmPassword){
+        await this.setState({passwordMatch: true})
+        }else{
+            await this.setState({passwordMatch: false})
+        }
+    }
+
+
+    SubmitHandler = async (event) =>{
+        event.preventDefault();
+        this.passwordsMatch();
+
+        if(this.state.confirmPassword.length< 6){
+            this.setState({
+                passwordMeetsRequirements:false
+        })
+        }
+        if(this.state.passwordMatch){
+            try{
+                const userObj = await createAuthUserWithEmailAndPassword(this.state.email,this.state.password);
+                console.log(userObj)
+
+            }catch(error){
+                console.log("user creation error", error)
+            }
+        }else{
+            console.log("passwords dont match")
+        }
     }
 
   
@@ -53,13 +83,47 @@ export class SignUp extends Component {
             <div className="signUpPage">
                 <img src={mars} alt="MARS Residential Logo" width="80px" />
                 <h1>Sign Up</h1>
-                <div className="formContainer">
-                    {this.state.signupInfo.map(input => {
-                        return <InputField className="inputContainer" key={input.label} label={input.label} name= {input.name} type= {input.type} placeholder= {input.placeholder}/>
-                    })}
-                    <PrimaryButton  text="Sign Up" redirectTo="/"onClickHandler ={this.onClickHandler}/>
-           
-                </div>
+                <form className="formContainer" onSubmit={this.SubmitHandler}>
+                        <label className="label" >
+                            Name
+                            <input
+                                name="name"
+                                type="name"
+                                className="inputField"
+                                onChange={this.onNameChange}
+                            />
+                        </label>
+                        <label className="label" >
+                            Email
+                            <input
+                                name="email"
+                                type="email"
+                                className="inputField"
+                                onChange={this.onEmailChange}
+                            />
+                        </label>
+                        <label className="label" >
+                            Password
+                            <input
+                                name="Password"
+                                type="password"
+                                className="inputField"
+                                onChange={this.onPasswordChange}
+                            />
+                        </label>
+                        <label className="label" >
+                            Confirm Password
+                            <input
+                                name="ConfirmPassword"
+                                type="password"
+                                className="inputField"
+                                onChange={this.onConfirmPasswordChange}
+                            />
+                        </label>
+                       {!this.state.passwordMatch ? <div>Passwords need to Match</div> : <></>}
+                       {!this.state.passwordMeetsRequirements ? <div>Password doesn't meet requirements</div> : <></>}
+                        <button type="submit">Sign Up </button>
+                    </form>
             </div>
 
         )

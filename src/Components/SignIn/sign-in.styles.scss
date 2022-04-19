@@ -103,3 +103,23 @@
 }
 
 }
+
+.label{
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+}
+
+.inputField{
+    padding: 6px;
+    height: 20px;
+    margin: 10px 0px 10px 0px;
+    width:300px;
+    border-radius: 5px;
+    border-style: hidden;
+    border-width: 0px;
+    
+    &:focus{
+        outline: none !important;
+    }
+}
