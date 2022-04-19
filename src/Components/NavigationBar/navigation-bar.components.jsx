@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <Fragment>
       <div className='navContainer'>
-        <img src={marsLogo} width='40px'/>
+        <img src={marsLogo} width='40px' height='40px'/>
         <div className='linksContainer'>
           <Link className="link" to="/">Home </Link>
           <Link className="link " to="/signin"> Sign In</Link>
