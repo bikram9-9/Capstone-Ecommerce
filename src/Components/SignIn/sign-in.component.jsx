@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './sign-in.styles.scss';
-import {signInWithGooglePopup,createUserDocumentFromAuth} from '../../firebase/firebase.util';
+import {signInWithGooglePopup,createUserDocumentFromAuth,signInUserWithEmailAndPassword} from '../../firebase/firebase.util';
 import  mars from '../../Assets/mars.png';
 import {Link} from 'react-router-dom';
 import googleLogo from '../../Assets/googleLogo.png'
@@ -27,13 +27,25 @@ export class SignIn extends Component {
         this.setState({ password: value });
     };
 
-    onSubmitHandler = () => {
-     console.log("email"+ this.state.email + "password" + this.state.password);
+    onSubmitHandler = async (event) => {
+        event.preventDefault();
+        try{
+            const response = await signInUserWithEmailAndPassword(this.state.email, this.state.password);
+            console.log(response);
+            this.resetForm();
+        }catch(error){
+            console.log("ERROR IN SIGNING IN"+ error)
+        }
+    
     }
 
      logGoogleUser = async() =>{
         const {user}= await signInWithGooglePopup();
        const userDocRef= await createUserDocumentFromAuth(user);
+    }
+
+    resetForm = () =>{
+        this.setState({email: '', password: ''});
     }
 
 
