@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './sign-up.styles.scss';
 import  mars from '../../Assets/mars.png';
-import {auth, createAuthUserWithEmailAndPassword} from '../../firebase/firebase.util'
+import {auth, createAuthUserWithEmailAndPassword, createUserDocumentFromAuth} from '../../firebase/firebase.util'
 
 export class SignUp extends Component {
 
@@ -66,11 +66,17 @@ export class SignUp extends Component {
         }
         if(this.state.passwordMatch){
             try{
-                const userObj = await createAuthUserWithEmailAndPassword(this.state.email,this.state.password);
-                console.log(userObj)
+                const {user} = await createAuthUserWithEmailAndPassword(this.state.email,this.state.password);
+                user.displayName = this.state.name;
+                await createUserDocumentFromAuth(user)
 
             }catch(error){
+                if(error.code == 'auth/email-already-in-use'){
+                    alert('Email already in use')
+                }else {
                 console.log("user creation error", error)
+
+                }
             }
         }else{
             console.log("passwords dont match")
