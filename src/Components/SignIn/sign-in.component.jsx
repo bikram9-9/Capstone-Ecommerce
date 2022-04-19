@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PrimaryButton from '../../Components/buttons/primary-button/primary-button.component';
 import InputField from '../../Components/input-field/input-field.component';
 import './sign-in.styles.scss';
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../firebase/firebase.util';
+import {signInWithGooglePopup,createUserDocumentFromAuth} from '../../firebase/firebase.util';
 import  mars from '../../Assets/mars.png';
 import {Link} from 'react-router-dom';
 import googleLogo from '../../Assets/googleLogo.png'
@@ -38,8 +38,9 @@ export class SignIn extends Component {
     }
 
      logGoogleUser = async() =>{
-        const {user} = await signInWithGooglePopup();
-       const userDocRef= await createUserDocumentFromAuth(user);
+        const response= await signInWithGooglePopup();
+        // console.log(response);
+    //    const userDocRef= await createUserDocumentFromAuth(user);
     }
 
 
@@ -56,6 +57,7 @@ export class SignIn extends Component {
                         <PrimaryButton  text="Sign In" redirectTo="/"onClickHandler ={this.onClickHandler}/>
                         <Link className="signUpDesc" to='/signup'>Sign Up for an Account</Link>
                     </div>
+
                         <button className="googleSignIn" onClick={this.logGoogleUser}>
                         <img src={googleLogo} className="googleLogo" width="20px" height="20px"/>
                                 Sign In with Google

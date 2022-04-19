@@ -1,0 +1,6 @@
+@import "../../global-variables.styles.scss";
+
+.cardListContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
