@@ -65,7 +65,7 @@ export class SignUp extends Component {
         })
         }
         if(this.state.passwordMatch){
-            try{
+            try{ 
                 const {user} = await createAuthUserWithEmailAndPassword(this.state.email,this.state.password);
                 user.displayName = this.state.name;
                 await createUserDocumentFromAuth(user)

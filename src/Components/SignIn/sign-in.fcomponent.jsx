@@ -1,68 +1,64 @@
-import React, { Component } from 'react'
+import {React,useContext, useState} from 'react'
 import './sign-in.styles.scss';
 import {signInWithGooglePopup,createUserDocumentFromAuth,signInUserWithEmailAndPassword} from '../../firebase/firebase.util';
 import  mars from '../../Assets/mars.png';
 import {Link} from 'react-router-dom';
 import googleLogo from '../../Assets/googleLogo.png'
+import { UserContext } from '../../context/user.context';
 
+const SignIn = () => {
+    
+   const {setCurrentUser}= useContext(UserContext);
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
 
-export class SignIn extends Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-                 email:'',
-                 password:''
-    }
-
-}
-
-    onEmailChange = (event) =>{
+    const onEmailChange = (event) =>{
         const{value} = event.target;
-        this.setState({ email: value });
+        setEmail(value);
     };
     
-    onPasswordChange = (event) =>{
+    const onPasswordChange = (event) =>{
         const{value} = event.target;
-        this.setState({ password: value });
+        setPassword(value);
     };
 
-    onSubmitHandler = async (event) => {
+    const onSubmitHandler = async (event) => {
         event.preventDefault();
         try{
-            const response = await signInUserWithEmailAndPassword(this.state.email, this.state.password);
-            console.log(response);
-            this.resetForm();
+            const user = await signInUserWithEmailAndPassword(email, password);
+            console.log(user);
+            setCurrentUser(user);
+            
+            // resetForm();
         }catch(error){
             console.log("ERROR IN SIGNING IN"+ error)
         }
     
     }
 
-     logGoogleUser = async() =>{
+    const logGoogleUser = async() =>{
         const {user}= await signInWithGooglePopup();
        const userDocRef= await createUserDocumentFromAuth(user);
     }
 
-    resetForm = () =>{
-        this.setState({email: '', password: ''});
+    const resetForm = () =>{
+        setEmail("");
+        setPassword("")
     }
 
-
-    render() {
-        return (
-            <div className="signInPage">
+  return (
+    <div className="signInPage">
                 <img src={mars} alt="MARS Residential Logo" width="80px" />
                 <h1>Sign In</h1>
                 <div className="container">
-                    <form className="formContainer" onSubmit={this.onSubmitHandler}>
+                    <form className="formContainer" onSubmit={onSubmitHandler}>
                         <label className="label" >
                             Email
                             <input
                                 name="Email"
                                 type="email"
                                 className="inputField"
-                                onChange={this.onEmailChange}
+                                onChange={onEmailChange}
                             />
                         </label>
                         <label className="label" >
@@ -71,7 +67,7 @@ export class SignIn extends Component {
                                 name="Password"
                                 type="password"
                                 className="inputField"
-                                onChange={this.onPasswordChange}
+                                onChange={onPasswordChange}
                             />
                         </label>
                         
@@ -79,16 +75,14 @@ export class SignIn extends Component {
                         <Link className="signUpDesc" to='/signup'>Sign Up for an Account</Link>
                     </form>
 
-                        <button className="googleSignIn" onClick={this.logGoogleUser}>
+                        <button className="googleSignIn" onClick={logGoogleUser}>
                         <img src={googleLogo} className="googleLogo" width="20px" height="20px"/>
                                 Sign In with Google
                         </button>
                     
                 </div>
             </div>
-
-        )
-    }
+  )
 }
 
-export default SignIn;
+export default SignIn

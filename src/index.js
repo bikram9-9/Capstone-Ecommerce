@@ -4,20 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
+import { UserProvider } from './context/user.context';
 import {  } from 'react-router-dom';
 import SignUp from '../src/Pages/SignUp/SignUp'
 import Navbar from './Components/NavigationBar/navigation-bar.components';
-import SignIn from './Components/SignIn/sign-in.component';
+import SignIn from './Components/SignIn/sign-in.fcomponent';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Navbar/>
-    <Routes>
-      <Route path="/" element={<App/>}/>
-      <Route path="signup" element={<SignUp/>}/>
-      <Route path="signIn" element={<SignIn/>}/>
-    </Routes>
+    <UserProvider>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<App/>}/>
+        <Route path="signup" element={<SignUp/>}/>
+        <Route path="signIn" element={<SignIn/>}/>
+      </Routes>
+    </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
