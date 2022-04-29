@@ -9,6 +9,7 @@ import {  } from 'react-router-dom';
 import SignUp from '../src/Pages/SignUp/SignUp'
 import Navbar from './Components/NavigationBar/navigation-bar.components';
 import SignIn from './Components/SignIn/sign-in.fcomponent';
+import ShopPage from './Pages/Shop/shopPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="/" element={<App/>}/>
         <Route path="signup" element={<SignUp/>}/>
         <Route path="signIn" element={<SignIn/>}/>
+        <Route path="shop" element={<ShopPage/>}/>
       </Routes>
     </UserProvider>
     </BrowserRouter>

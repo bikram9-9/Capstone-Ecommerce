@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import CardList from '../Components/category-list/category-list.component';
+import CardList from '../../Components/category-list/category-list.component';
 
 export class Homepage extends Component {
-
     constructor(){
         super();
         this.state={

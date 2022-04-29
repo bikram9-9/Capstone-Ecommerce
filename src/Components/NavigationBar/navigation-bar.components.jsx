@@ -28,7 +28,7 @@ const Navbar = () => {
           ):(
             <Link className="link " to="/signin"> Sign In</Link>
           )}
-         
+          <Link className="link" to="shop">Shop </Link>
           {/* {email == null ? (<div>{email}</div>): (<></>)} */}
           {/* {!currentUser==null ? ( <Link className="link " to="#"> {currentUser}</Link>): (<></>)} */}
         </div>
