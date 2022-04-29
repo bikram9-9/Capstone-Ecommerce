@@ -5,6 +5,8 @@ import marsLogo from '../../Assets/mars.png'
 import './navigation-bar.styles.scss'
 import { UserContext } from '../../context/user.context'
 import {signOutUser} from '../../firebase/firebase.util'
+import CartIcon from '../CartIcon/cart-icon.component'
+// import CartDropdown from '../CartDropdown/cart-dropdown.component'
 
 const Navbar = () => {
 
@@ -29,10 +31,13 @@ const Navbar = () => {
             <Link className="link " to="/signin"> Sign In</Link>
           )}
           <Link className="link" to="shop">Shop </Link>
+
+          <CartIcon/>
           {/* {email == null ? (<div>{email}</div>): (<></>)} */}
           {/* {!currentUser==null ? ( <Link className="link " to="#"> {currentUser}</Link>): (<></>)} */}
         </div>
       </div>
+      {/* <CartDropdown/> */}
     </Fragment>
   )
 }
