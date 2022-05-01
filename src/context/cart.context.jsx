@@ -1,17 +1,43 @@
-// import {createContext, useState,useContext} from 'react'
-
-// export const CartContext = createContext({
-//     selectedItems: [],
-// })
+import {createContext, useState,useContext} from 'react'
 
 
+//   {
+//   "id": 2,
+//   "name": "Blue Beanie",
+//   "imageUrl": "https://i.ibb.co/ypkgK0X/blue-beanie.png",
+//   "price": 18
+// },
 
-// export const CartProvider = ({children}) => {
-//     const{selectedItems, setSelectedItems} = useState(null);
-//     const items = {selectedItems};
+export const CartContext = createContext({
+    cartItems: [],
+    addToCart: ()=> null,
+})
 
+export const CartProvider = ({children}) => {
+    const[cartItems, addCartItems] = useState([]);
+    const items = {cartItems};
 
-//   return (
-//     <CartContext.Provider value={items}>{children}</CartContext.Provider>
-//   )
-// }
+   
+    const addToCart = (product) => {
+      const selectedItems = [...cartItems];
+      //if cartitems contains the product, change quantitiy in selectedItems
+      if(selectedItems.includes(product)){
+        const currentItem = selectedItems.find((selectedItem)=> { return selectedItem.id});
+        selectedItems.map((selectedItem) =>(
+          currentItem.id === product.id 
+          ? {...selectedItem, quantitiy: selectedItem.quantitiy +1}
+          : selectedItem
+        )
+        );
+        addCartItems(selectedItems);
+      }else{
+        const newProduct = {...product, quantitiy: 1};
+        selectedItems.push(newProduct)
+        addCartItems(selectedItems);
+      }
+    }
+    const values = {cartItems, addToCart};
+  return (
+    <CartContext.Provider value={values}>{children}</CartContext.Provider>
+  )
+}

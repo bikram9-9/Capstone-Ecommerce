@@ -11,14 +11,14 @@ import Navbar from './Components/NavigationBar/navigation-bar.components';
 import SignIn from './Components/SignIn/sign-in.fcomponent';
 import ShopPage from './Pages/Shop/shopPage';
 import  {ProductsProvider} from './context/product.context'
-// import {CartProvider} from './context/cart.context'
+import {CartProvider} from './context/cart.context'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <UserProvider>
      <ProductsProvider>
-       {/* <CartProvider> */}
-          <UserProvider>
+       <CartProvider>
             <Navbar/>
             <Routes>
               <Route path="/" element={<App/>}/>
@@ -26,9 +26,9 @@ ReactDOM.render(
               <Route path="signIn" element={<SignIn/>}/>
               <Route path="shop" element={<ShopPage/>}/>
             </Routes>
-          </UserProvider>
-        {/* </CartProvider> */}
+        </CartProvider>
       </ProductsProvider>
+      </UserProvider>
     </BrowserRouter> 
   </React.StrictMode>,
   document.getElementById('root')
