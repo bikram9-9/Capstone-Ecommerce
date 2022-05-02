@@ -1,13 +1,5 @@
 import {createContext, useState,useContext} from 'react'
 
-
-//   {
-//   "id": 2,
-//   "name": "Blue Beanie",
-//   "imageUrl": "https://i.ibb.co/ypkgK0X/blue-beanie.png",
-//   "price": 18
-// },
-
 export const CartContext = createContext({
     cartItems: [],
     addToCart: ()=> null,

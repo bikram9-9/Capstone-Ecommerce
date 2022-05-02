@@ -12,24 +12,28 @@ import SignIn from './Components/SignIn/sign-in.fcomponent';
 import ShopPage from './Pages/Shop/shopPage';
 import  {ProductsProvider} from './context/product.context'
 import {CartProvider} from './context/cart.context'
+import {Provider} from 'react-redux'
+import {store} from './store/store'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <UserProvider>
-     <ProductsProvider>
-       <CartProvider>
-            <Navbar/>
-            <Routes>
-              <Route path="/" element={<App/>}/>
-              <Route path="signup" element={<SignUp/>}/>
-              <Route path="signIn" element={<SignIn/>}/>
-              <Route path="shop" element={<ShopPage/>}/>
-            </Routes>
-        </CartProvider>
-      </ProductsProvider>
-      </UserProvider>
-    </BrowserRouter> 
+    <Provider store={store}>
+      <BrowserRouter>
+      <UserProvider>
+      <ProductsProvider>
+        <CartProvider>
+              <Navbar/>
+              <Routes>
+                <Route path="/" element={<App/>}/>
+                <Route path="signup" element={<SignUp/>}/>
+                <Route path="signIn" element={<SignIn/>}/>
+                <Route path="shop" element={<ShopPage/>}/>
+              </Routes>
+          </CartProvider>
+        </ProductsProvider>
+        </UserProvider>
+      </BrowserRouter> 
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
