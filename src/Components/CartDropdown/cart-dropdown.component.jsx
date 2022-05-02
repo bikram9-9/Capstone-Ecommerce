@@ -11,7 +11,7 @@ const CartDropdown = () => {
     <div className='dropdownContainer'>
         <div className='cartItems'>
           {cartItems.map((item)=> (
-             <CartItem key={item.id} cartItem={item}/>
+             <CartItem key={item.id} item={item}/>
           ))}
             <PrimaryButton text="GO TO CHECKOUT" redirectTo="/cart"/>
         </div>

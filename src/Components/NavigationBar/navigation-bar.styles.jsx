@@ -1,21 +1,24 @@
-@import "../../global-variables.styles.scss";
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
-.navContainer{
-    background-color: $primary-color ;
+import * as palette from '../../global-variables.styles';
+export const NavigationContianer = styled.div`
+    background-color:${palette.PRIMARY_COLOR};
     display: flex;
     flex-direction: row;
     padding: 10px;
     justify-content: space-between;
-}
+`;
 
-.linksContainer{
+
+export const LinksContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-items: end;
     align-items: center;
-}
+`;
 
-.link{
+export const StyledLink = styled(Link)`
     color: white;
     padding: 10px 20px 10px 20px;
 
@@ -26,4 +29,6 @@
     &:active{
         color: $secondary-color;
     }
-}
+`;
+
+
