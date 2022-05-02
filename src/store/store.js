@@ -7,4 +7,5 @@ import { useLinkClickHandler } from 'react-router-dom';
 //library helpers that are triggered before an action hits a reducer
 const middlewares = [logger]
 const composedEnhancers = compose(applyMiddleware(...middlewares));
+
 export const store = configureStore(rootReducer, undefined, composedEnhancers);
